@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './style.css'
 import _ from 'lodash'
 
 class AvgTxCount extends Component {

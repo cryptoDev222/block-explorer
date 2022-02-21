@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './style.css'
 import _ from 'lodash'
 import {ResponsiveContainer, AreaChart, Area, Tooltip, XAxis} from 'recharts';
 

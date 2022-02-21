@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './style.css'
 import Stats from './../Stats';
 import GithubCorner from 'react-github-corner';
 

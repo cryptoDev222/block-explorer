@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './style.css'
 var TimerMixin = require('react-timer-mixin');
 
 class LastBlock extends Component {

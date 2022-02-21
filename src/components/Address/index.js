@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './style.css';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './style.css';
 
 class DataDash extends Component {
   constructor(props) {

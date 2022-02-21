@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './style.css'
 import { ResponsiveContainer, LineChart, XAxis, Legend, Tooltip, Line } from 'recharts';
 
 class BlockStats extends Component {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
-import './style.css'
-
 class LatestBlocks extends Component {
   
   constructor(props) {
