@@ -41,8 +41,11 @@ class Stats extends Component {
 
   componentDidMount() {
     this.timer = TimerMixin.setInterval(async () => {
-      var curr_block_no = await web3_eth_getBlockNumber;
+      console.log("aaaaaaa")
+      var curr_block_no = await web3_eth_getBlockNumber();
       if (!this.state.blocks.length) return
+      console.log("aaaaaaa1", this.state.blocks[0], curr_block_no)
+
       if (curr_block_no > this.state.blocks[0].number) {
         const block = await web3_eth_getBlock(curr_block_no, true);
         const gasPrice = await web3_eth_gasPrice();
