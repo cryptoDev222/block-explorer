@@ -7,13 +7,11 @@ import Home from './../Home';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import {
-  Navbar,
-  Nav,
   FormGroup,
   FormControl,
   Button,
-  NavItem
-} from 'react-bootstrap';
+} from '@material-ui/core';
+import {Navbar, Nav, NavItem} from 'react-bootstrap'
 
 import { web3_eth_getTransactionByHash } from '../../web3Helpers';
 class App extends Component {

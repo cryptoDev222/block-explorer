@@ -1,9 +1,37 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import { Table } from 'react-bootstrap';
-
+import { Table,TableBody,TableCell, TableHead, TableRow, Link} from '@material-ui/core';
 import { web3_eth_getBlock } from '../../../web3Helpers';
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  "table": {
+    color: "white",
+    border: '1px solid'
+  },
+  transactionList: {
+    overflowX: 'auto'
+  }
+})
+
+const StyledTableCell = withStyles((theme) => ({
+  root: {
+    color: "white",
+    border: '1px solid',
+    padding: '6px'
+  }
+}))(TableCell);
+
+const StyledLink = withStyles((theme) => ({
+  underlineHover: {
+    fontSize: '1.25rem',
+    color: '#00bc8c',
+    "&:hover": {
+      color: '#00bc8c55',
+      cursor: 'pointer',
+    }
+  }
+}))(Link);
 
 class TransactionList extends Component {
   constructor(props) {
@@ -30,6 +58,7 @@ class TransactionList extends Component {
 
   render() {
     var transactions = this.state.transactions;
+    const { classes } = this.props;
 
     if (!transactions){
       return <pre>loading</pre>
@@ -39,46 +68,41 @@ class TransactionList extends Component {
       var txValue = 
         parseInt(transactions[index].value, 10) / 1000000000000000000;
       tableRows.push(
-        <tr key={transactions[index].hash}>
-          <td>
-            <Link to={`/tx/${transactions[index].hash}`}>
+        <TableRow key={transactions[index].hash}>
+          <StyledTableCell>
+            <StyledLink href={`/tx/${transactions[index].hash}`}>
               <small>{transactions[index].hash}</small>
-            </Link>
-          </td>
-          <td>
-            <Link to={`/address/${transactions[index].from}`}>
+            </StyledLink>
+          </StyledTableCell>
+          <StyledTableCell>
+            <StyledLink href={`/address/${transactions[index].from}`}>
               <small>{transactions[index].from}</small>
-            </Link>
-          </td>
-          <td>
-            <Link to={`/address/${transactions[index].to}`}>
+            </StyledLink>
+          </StyledTableCell>
+          <StyledTableCell>
+            <StyledLink href={`/address/${transactions[index].to}`}>
               <small>{transactions[index].to}</small>
-            </Link>
-          </td>
-          <td>{txValue}</td>
-        </tr>
+            </StyledLink>
+          </StyledTableCell>
+          <StyledTableCell>{txValue}</StyledTableCell>
+        </TableRow>
       );
     });
     return (
-      <div className="TransactionList">
-        <div className="card border-secondary mb-3">
-          <div className="card-header">Transactions</div>
-          <div className="card-body">
-            <Table striped responsive>
-              <thead>
-                <tr>
-                  <th>Tx Hash</th>
-                  <th>From</th>
-                  <th>To</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>{tableRows}</tbody>
-            </Table>
-          </div>
-        </div>
+      <div className={classes.transactionList}>
+        <Table  className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Tx Hash</StyledTableCell>
+              <StyledTableCell>From</StyledTableCell>
+              <StyledTableCell>To</StyledTableCell>
+              <StyledTableCell>Value</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>{tableRows}</TableBody>
+        </Table>
       </div>
     );
   }
 }
-export default TransactionList;
+export default withStyles(styles)(TransactionList);

@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TransactionList from './TransactionList';
-
+import { withStyles } from "@material-ui/core/styles";
 import moment from 'moment';
 
 import { web3_eth_getBlock } from '../../web3Helpers';
 
+
+const styles = theme => ({
+  container: {
+    padding: '20px'
+  },
+  transactionList: {
+    overflowX: 'auto'
+  }
+})
 class Block extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +53,7 @@ class Block extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     const block = this.state.block;
     if (!block.difficulty) {
       return <pre>loading...</pre>;
@@ -53,7 +63,7 @@ class Block extends Component {
     const difficultyTotal = parseInt(block.totalDifficulty, 10);
 
     return (
-      <div className="Block container">
+      <div className={classes.container}>
         <br />
         <h2>
           <i className="fa fa-cube" /> Block Info
@@ -138,4 +148,4 @@ class Block extends Component {
     );
   }
 }
-export default Block;
+export default withStyles(styles)(Block);

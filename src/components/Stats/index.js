@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DataDash from './DataDash';
 import { Grid, Row, Col } from 'react-bootstrap';
+import {CircularProgress} from '@material-ui/core';
 
 import AvgBlockTime from './AvgBlockTime';
 import AvgTxCount from './AvgTxCount';
@@ -84,7 +85,7 @@ class Stats extends Component {
 
   render() {
     if (!this.state || !this.state.blocks.length) {
-      return <pre> loading...</pre>;
+      return <CircularProgress> loading...</CircularProgress>;
     }
     return (
       <div className="Stats">
