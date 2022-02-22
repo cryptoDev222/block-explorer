@@ -37,7 +37,7 @@ class DataDash extends Component {
 
     console.log(data)
 
-
+    if (!data.blocks.length) return
 
     const difficulty = parseInt(data.blocks[0].difficulty, 10);
     const gasPrice = parseInt(data.gasPrice, 10);

@@ -10,7 +10,6 @@ import GasUse from './GasUse';
 import LastBlock from './LastBlock';
 import LatestBlocks from './LatestBlocks';
 import LatestTransactions from './LatestTransactions';
-import TxPerSec from './TxPerSec';
 
 import Constants from './../Constants';
 import TimerMixin from 'react-timer-mixin'
@@ -85,8 +84,20 @@ class Stats extends Component {
 
   render() {
     if (!this.state || !this.state.blocks.length) {
-      return <CircularProgress> loading...</CircularProgress>;
+      return <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        flexDirection: 'column',
+        gap: '20px'
+      }}>
+        <CircularProgress/>
+        loading...
+      </div>
+      
     }
+  
     return (
       <div className="Stats">
         <br />
